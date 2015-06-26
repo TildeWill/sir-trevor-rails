@@ -9,17 +9,23 @@ module SirTrevorRails
     end
 
     def initialize(hash, parent)
-      @as_json = hash
+      @raw_data = hash
       @parent  = parent
       @type    = hash[:type].to_sym
-
       super(hash[:data])
     end
 
-    attr_reader :parent, :type, :as_json
+    attr_reader :parent, :type
 
     def to_partial_path
       "sir_trevor/blocks/" << self.class.name.demodulize.underscore
+    end
+
+    def as_json(*attrs)
+      {
+        type: @type.to_s,
+        data: marshal_dump
+      }
     end
 
     private
