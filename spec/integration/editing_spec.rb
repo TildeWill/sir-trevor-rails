@@ -2,8 +2,7 @@ require 'spec_helper'
 
 class EditingSpec < ActionDispatch::IntegrationTest
   describe 'Edit form' do
-    let(:json) { '[{"type":"text","data":{"text":"asdf"}}]' }
-    let(:post) { Post.create(body: json) }
+    let(:post) { Post.create(body: blocks_json(:text_html)) }
 
     it 'serializes BlockArray to correct json' do
       visit edit_post_path(post)

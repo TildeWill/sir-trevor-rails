@@ -5,7 +5,7 @@ module SirTrevorRails
     DEFAULT_FORMAT = :markdown
 
     def self.from_hash(hash, parent)
-      hash = hash.deep_dup
+      hash = hash.deep_dup.with_indifferent_access
       self.type_klass(hash).new(hash, parent)
     end
 

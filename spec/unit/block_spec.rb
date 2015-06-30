@@ -1,6 +1,6 @@
 require 'spec_helper'
 
-module SirTrevorRails
+class BlockSpec < ActiveSupport::TestCase
   describe Block do
     describe '.block_class' do
       subject { Block }

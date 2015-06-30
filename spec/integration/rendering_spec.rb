@@ -2,7 +2,7 @@ require 'spec_helper'
 
 class RenderingSpec < ActionDispatch::IntegrationTest
   describe 'Content rendering' do
-    let(:json) { '[{"type":"text","data":{"text":"asdf", format: "html"}}, {"type": "list", "data": {"listItems": [], "format": "html"}}]' }
+    let(:json) { blocks_json(:list_html, :text_html) }
     let(:post) { Post.create(body: json) }
 
     it 'renders all blocks as separate divs' do
