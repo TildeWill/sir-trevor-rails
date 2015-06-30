@@ -2,10 +2,15 @@ require 'ostruct'
 
 module SirTrevorRails
   class Block < OpenStruct
+    DEFAULT_FORMAT = :markdown
 
     def self.from_hash(hash, parent)
       hash = hash.deep_dup
       self.type_klass(hash).new(hash, parent)
+    end
+
+    def format
+      send(:[], :format).present? ? send(:[], :format).to_sym : DEFAULT_FORMAT
     end
 
     def initialize(hash, parent)
@@ -64,6 +69,5 @@ module SirTrevorRails
         self
       end
     end
-
   end
 end

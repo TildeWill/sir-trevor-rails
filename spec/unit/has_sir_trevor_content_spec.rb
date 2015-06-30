@@ -3,11 +3,6 @@ require 'spec_helper'
 module SirTrevorRails
   describe 'HasSirTrevorContent' do
     describe 'initialized for body field' do
-      before do
-        Post.send(:include, HasSirTrevorContent)
-        Post.send(:sir_trevor_content, :body)
-      end
-
       let(:post) { Post.new }
       let(:text_block) { {type: 'text', data: {text: 'Lorem ipsum'}} }
 
